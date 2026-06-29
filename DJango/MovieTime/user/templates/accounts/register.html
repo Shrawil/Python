@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register | MovieTime</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<header>
+    <a style="text-decoration: none;" href="{% url 'index' %}"><h1>🎬 MovieTime</h1></a>
+
+    <nav>
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'login' %}">Login</a>
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <h2>Create Account</h2>
+
+    <p>Book your favourite movies in seconds.</p>
+
+</section>
+
+<div style="max-width:500px;margin:40px auto;">
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Register
+        </button>
+
+    </form>
+
+    <p style="text-align:center;margin-top:20px;">
+
+        Already have an account?
+
+        <a href="{% url 'login' %}" style="color:#f43f5e;">
+            Login
+        </a>
+
+    </p>
+
+</div>
+
+</body>
+</html>

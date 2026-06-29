@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book {{ movie.title }} - MovieTime</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<header>
+    <a style="text-decoration: none;" href="{% url 'index' %}"><h1>🎬 MovieTime</h1></a>
+</header>
+
+<section class="hero">
+
+    <h2>Book Your Movie</h2>
+
+    <p>Select a show and reserve your seats.</p>
+
+</section>
+
+<section id="booking">
+
+    <div class="movie-card">
+
+        <div class="poster">
+            🎥
+        </div>
+
+        <div class="movie-info">
+
+            <h2>{{ movie.title }}</h2>
+
+            <p>{{ movie.description }}</p>
+
+            <p><strong>Duration:</strong> {{ movie.duration }} minutes</p>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <form method="POST">
+    {% csrf_token %}
+
+    <label>Select Show:</label>
+
+    <select name="show">
+        {% for show in shows %}
+            <option value="{{ show.id }}">
+                {{ show.date }} - {{ show.time }} - Hall {{ show.hall }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <input type="number" name="seats" min="1" value="1">
+
+    <button type="submit">Book</button>
+</form>
+{% if error %}
+    <p>{{ error }}</p>
+{% endif %}
+</section>
+
+<footer>
+    MovieTime • Built with Django
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking | MovieTime</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="{% static 'script.js' %}" defer></script>
+</head>
+<body>
+<header>
+    <a style="text-decoration: none;" href="{% url 'index' %}"><h1>🎬 MovieTime</h1></a>
+    <nav>
+        <form action="{% url 'logout' %}"
+            method="post"
+            style="display: contents;">
+            {% csrf_token %}
+            <button type="submit">
+                Logout
+            </button>
+        </form>
+    </nav>
+</header>
+
+<footer>
+    MovieTime • Built with Django
+</footer>
+
+</body>
+</html>

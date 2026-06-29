@@ -58,7 +58,7 @@ def main() -> None:
             win = True
             break
 
-        guess = input("Enter a letter : ")
+        guess = input("Enter a letter : ").lower()
         if len(guess) > 1:
             print("You can not enter more than one character!")
         else:

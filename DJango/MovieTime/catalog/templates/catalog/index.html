@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home | MovieTime</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="{% static 'script.js' %}" defer></script>
+</head>
+
+<body>
+
+<header>
+
+    <a style="text-decoration: none;" href="{% url 'index' %}"><h1>🎬 MovieTime</h1></a>
+    <nav>
+
+        {% if user.is_authenticated %}
+
+            <h3>
+                Welcome, {{user.username}}!
+            </h3>
+
+            <form action="{% url 'logout' %}"
+                method="post"
+                style="display: contents;">
+                {% csrf_token %}
+                <button type="submit">
+                    Logout
+                </button>
+            </form>
+
+        {% else %}
+
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+
+        {% endif %}
+    </nav>
+
+</header>
+{% if messages %}
+    {% for message in messages %}
+        <div style="padding: 12px;
+    margin: 20px;
+    border-radius: 6px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+<section class="hero">
+
+    <h2>Book your favourite movies online</h2>
+
+    <p>
+        Browse the latest releases and reserve your seat in seconds.
+    </p>
+
+</section>
+
+<section id="catalog">
+
+    <div class="movie-grid">
+
+        {% for item in items %}
+
+        <div class="movie-card">
+
+            <div class="poster">
+                🎥
+            </div>
+
+            <div class="movie-info">
+
+                <h3>{{ item.name }}</h3>
+
+                <p><strong>Producer:</strong> {{ item.producer }}</p>
+
+                <p><strong>Platform:</strong> {{ item.platform }}</p>
+
+                <p><strong>Release:</strong> {{ item.releaseDate }}</p>
+
+                <p class="price">$ {{ item.price }}</p>
+
+                <a href="{% url 'book_movie' item.id %}" 
+                    style="display: inline-block;
+                    padding: 10px 20px;
+                    background: #007bff;
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 5px;">
+                    Book Now
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<footer>
+    MovieTime • Built with Django
+</footer>
+
+</body>
+</html>
