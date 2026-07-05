@@ -36,27 +36,21 @@
         </p><br>
     {% endif %}
     <form method="POST">
-
         {% csrf_token %}
-
         <label>Username</label>
-
         <input
             type="text"
             name="username"
             required
             style="width:100%;padding:12px;margin:10px 0 20px;border-radius:8px;border:none;"
         >
-
         <label>Password</label>
-
         <input
             type="password"
             name="password"
             required
             style="width:100%;padding:12px;margin:10px 0 20px;border-radius:8px;border:none;"
         >
-
         <button type="submit">
             Login
         </button>
