@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}NinHub{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block css %}{% endblock %}
+        <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="layout">
+            <aside class="sidebar">
+                <h1 class="logo">NinHub</h1>
+                <nav>
+                    <a href="{% url 'home' %}">
+                        <i class="ri-home-5-line"></i>
+                        Home
+                    </a>
+                    <a href="{% url 'search' %}">
+                        <i class="ri-search-line"></i>
+                        Search
+                    </a>
+                    <a href="#">
+                        <i class="ri-compass-line"></i>
+                        Explore
+                    </a>
+                    <a href="{% url 'chat_list' %}">
+                        <i class="ri-message-2-line"></i>
+                        Messages
+                    </a>
+                    <a href="#">
+                        <i class="ri-heart-3-line"></i>
+                        Notifications
+                    </a>
+                    <a href="{% url 'create-post' %}">
+                        <i class="ri-add-box-line"></i>
+                        Create
+                    </a>
+                    <a href="{% url 'me' %}">
+                        <i class="ri-user-line"></i>
+                        Profile
+                    </a>
+                </nav>
+                <div class="logout-container">
+                    <a href="{% url 'logout' %}" class="logout-btn">
+                        <i class="ri-logout-box-r-line"></i>
+                        Logout
+                    </a>
+                </div>
+            </aside>
+            <main class="content">
+
+                {% block content %}
+                {% endblock %}
+            </main>
+        </div>
+        {% block js %}{% endblock %}
+    </body>
+</html>

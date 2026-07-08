@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Home | NinHub
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="layout">
+    <!-- FEED -->
+    <main class="feed">
+        <!-- STORIES -->
+        <section class="stories">
+            {% for i in "12345678" %}
+            <div class="story">
+                <img src="https://picsum.photos/70?random={{forloop.counter}}">
+                <p>User {{forloop.counter}}</p>
+            </div>
+            {% endfor %}
+        </section>
+
+        <!-- POSTS -->
+        {% for post in posts %}
+        <article class="post">
+
+            <div class="post-header">
+                <img src="{{ post.user.profile.pfp.url }}">
+                <b>
+                    <a href="{% url 'user_profile' post.user.username %}" class="post-user">{{post.user.username}}</a>
+                </b>
+            </div>
+
+            <img class="post-image" src="{{ post.image.url }}">
+
+            <!-- Action icons -->
+            <div class="actions">
+
+                <div class="left-actions">
+
+                    <a href="{% url 'like_post' post.id %}" class="like-btn">
+                        {% if post.id in liked_posts %}
+                            <i class="ri-heart-3-fill liked"></i>
+                        {% else %}
+                            <i class="ri-heart-3-line"></i>
+                        {% endif %}
+                    </a>
+                    <a href="#" class="comment-btn" data-post="{{ post.id }}">
+                        <i class="ri-chat-3-line"></i>
+                    </a>
+                    <a href="#">
+                        <i class="ri-send-plane-line"></i>
+                    </a>
+
+                </div>
+
+                <i class="ri-bookmark-line bookmark"></i>
+
+            </div>
+
+            <p class="likes-count">
+                <b>{{ post.likes.count }} Likes</b>
+            </p>
+
+            <p>
+                <b>{{ post.user.username }}</b>
+                {{ post.caption }}
+            </p>
+
+            <!-- Comments -->
+
+            <div class="comments">
+                {% if post.comments.count > 2 %}
+                    <a href="#" class="view-comments" data-post="{{ post.id }}">
+                        View all {{ post.comments.count }} comments
+                    </a>
+                {% endif %}
+                {% for comment in post.comments.all|slice:":2" %}
+                    <div class="comment-preview">
+                        <img
+                            src="{{ comment.user.profile.pfp.url }}"
+                            class="comment-preview-pfp"
+                        >
+                        <p>
+                            <b>
+                                <a href="{% url 'user_profile' comment.user.username %}">
+                                    {{ comment.user.username }}
+                                </a>
+                            </b>
+                            {{ comment.text }}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Comment form -->
+
+            <form method="POST" action="{% url 'add_comment' post.id %}" class="comment-form">
+                {% csrf_token %}
+                {{ comment_form.text }}
+                <button type="submit">Post</button>
+            </form>
+        </article>
+            <div class="comments-modal" id="comments-{{ post.id }}">
+            <div class="comments-box">
+                <div class="comments-header">
+                    <h3>Comments</h3>
+                    <button class="close-comments">&times;</button>
+                </div>
+                <div class="comments-list">
+                    {% for comment in post.comments.all %}
+                        <div class="comment">
+                            {% if comment.user.profile.pfp %}
+                                <img class="comment-pfp" src="{{ comment.user.profile.pfp.url }}">
+                            {% else %}
+                                <img class="comment-pfp" src="{% static 'icons/DefaultPFP.webp' %}">
+                            {% endif %}
+
+                            <div class="comment-body">
+
+                                <a href="{% url 'user_profile' comment.user.username %}">
+                                    {{ comment.user.username }}
+                                </a>
+
+                                <span>{{ comment.text }}</span>
+
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p>No comments yet.</p>
+                    {% endfor %}
+                </div>
+                <form method="POST"
+                    action="{% url 'add_comment' post.id %}"
+                    class="modal-comment-form">
+                    {% csrf_token %}
+                    {{ comment_form.text }}
+                    <button>Post</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </main>
+
+    <!-- RIGHT -->
+    <aside class="right">
+        <div class="profile">
+            <a href="{% url 'user_profile' profile.user.username %}">
+                <img src="{{ profile.pfp.url}} ">
+            </a>
+            <div>
+            <a href="{% url 'user_profile' profile.user.username %}">
+                <h3>{{request.user.username}}</h3>
+            </a>
+                <span>{{profile.bio}}</span>
+            </div>
+        </div>
+
+        <!-- DONE: SHOW TOP 5 PEOPLE WITH MOST FOLLOW IN SUGGESTION -->
+        <h4>Suggested For You</h4>
+        {% for suggested_user in suggested_users %}
+        <a href="{% url 'user_profile' suggested_user.username %}">
+            <div class="suggestion">
+                <img src="{{suggested_user.profile.pfp.url}}">
+                <div>
+                    <p>{{suggested_user.username}}</p>
+                    <small>Suggested</small>
+                </div>
+
+                <!-- Send suggested.user.username and redirect boolean -->
+                <form method="POST" action="{% url 'follow' suggested_user.username %}?next=home">
+                    {% csrf_token %}
+                    <button style="
+                        margin-left:auto;
+                        background:#0095f6;
+                        color:white;
+                        border:none;
+                        margin-left: 10px;
+                        padding:7px 15px;
+                        border-radius:8px;
+                        cursor:pointer;
+                    ">
+                        Follow
+                    </button>
+                </form>
+            </div>
+        </a>
+        {% endfor %}
+    </aside>
+</div>
+{% endblock %}

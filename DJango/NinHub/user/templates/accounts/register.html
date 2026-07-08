@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Register | NinHub</title>
+
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+
+</head>
+
+<body>
+
+<div class="background">
+
+    <div class="login-card">
+
+        <img src="{% static 'logo/NinHubLogo.png' %}" class="logo">
+
+        <h1>Create Account</h1>
+
+        <p>Join the NinHub community</p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Username</label>
+                {{ form.username }}
+            </div><br>
+
+            <div class="form-group">
+                <label>Password</label>
+                {{ form.password1 }}
+            </div><br>
+
+            <div class="form-group">
+                <label>Confirm Password</label>
+                {{ form.password2 }}
+            </div>
+
+            <button type="submit">
+                Create Account
+            </button>
+
+        </form>
+
+        <div class="bottom-text">
+
+            Already have an account?
+
+            <a href="{% url 'login' %}">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,sans-serif;
+}
+
+body{
+
+    background:#0d1117;
+
+    color:white;
+
+}
+
+.background{
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.login-card{
+
+    width:420px;
+
+    background:#161b22;
+
+    border:1px solid #30363d;
+
+    border-radius:18px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:0 0 40px rgba(0,0,0,.45);
+
+}
+
+.logo{
+
+    width:120px;
+
+    margin-bottom:20px;
+
+}
+
+h1{
+
+    margin-bottom:10px;
+
+}
+
+p{
+
+    color:#8b949e;
+
+    margin-bottom:30px;
+
+}
+
+form{
+
+    text-align:left;
+
+}
+
+form p{
+
+    margin-bottom:20px;
+
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#c9d1d9;
+
+}
+
+input{
+
+    width:100%;
+
+    padding:13px;
+
+    background:#0d1117;
+
+    border:1px solid #30363d;
+
+    border-radius:10px;
+
+    color:white;
+
+    font-size:15px;
+
+    transition:.25s;
+
+}
+
+input:focus{
+
+    outline:none;
+
+    border-color:#3b82f6;
+
+}
+
+button{
+
+    width:100%;
+
+    margin-top:10px;
+
+    padding:14px;
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    background:#3b82f6;
+
+}
+
+.bottom-text{
+
+    margin-top:30px;
+
+    color:#8b949e;
+
+}
+
+.bottom-text a{
+
+    color:#58a6ff;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.bottom-text a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* Django error lists */
+
+.errorlist{
+
+    list-style:none;
+
+    color:#ff7b72;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+}

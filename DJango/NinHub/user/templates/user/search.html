@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} 
+    Search | NinHub
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="search-container">
+    <h1>Search Users</h1>
+    <form method="GET">
+        <input
+            type="text"
+            name="q"
+            value="{{ query }}"
+            placeholder="Search username...">
+        <button type="submit">
+            <i class="ri-search-line"></i>
+        </button>
+    </form>
+    <div class="results">
+        {% for user in users %}
+        <a href="{% url 'user_profile' user.username %}" class="user-card">
+            <img src="{{ user.profile.pfp.url }}">
+            <div>
+                <h3>{{ user.username }}</h3>
+                <small>
+                    {{ user.follower.count }} followers
+                </small>
+            </div>
+        </a>
+        {% empty %}
+            {% if query %}
+                <p>No users found.</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
