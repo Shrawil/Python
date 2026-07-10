@@ -18,14 +18,16 @@
     <!-- FEED -->
     <main class="feed">
         <!-- STORIES -->
-        <section class="stories">
-            {% for i in "12345678" %}
-            <div class="story">
-                <img src="https://picsum.photos/70?random={{forloop.counter}}">
-                <p>User {{forloop.counter}}</p>
-            </div>
-            {% endfor %}
+        <!--
+            <section class="stories">
+                {% for i in "12345678" %}
+                <div class="story">
+                    <img src="https://picsum.photos/70?random={{forloop.counter}}">
+                    <p>User {{forloop.counter}}</p>
+                </div>
+                {% endfor %}
         </section>
+        -->
 
         <!-- POSTS -->
         {% for post in posts %}

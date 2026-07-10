@@ -6,6 +6,10 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ["image", "caption"]
+        widgets = {
+            "image": forms.ClearableFileInput(attrs={"id": "id_image", "accept": "image/*"}),
+            "caption": forms.Textarea(attrs={"placeholder": "Write a caption..."}),
+        }
 
 class CommentForm(forms.ModelForm):
     class Meta:

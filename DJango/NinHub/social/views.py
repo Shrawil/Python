@@ -40,24 +40,33 @@ def chat(request, username):
 @login_required
 def chat_list(request):
     messages = Message.objects.filter(
-        Q(sender=request.user) |
-        Q(receiver=request.user)
-    )
-    chat_users = []
-    seen = set()
+        Q(sender=request.user) | Q(receiver=request.user)
+    ).select_related("sender", "receiver").order_by("-created_at")  # newest first
+
+    chat_data = []
+    seen = {}
 
     for message in messages:
         other_user = (
-            message.receiver
-            if message.sender == request.user
-            else message.sender
+            message.receiver if message.sender == request.user else message.sender
         )
 
         if other_user.id not in seen:
-            seen.add(other_user.id)
-            chat_users.append(other_user)
+            unread_count = Message.objects.filter(
+                sender=other_user, receiver=request.user, is_read=False
+            ).count()
+
+            entry = {
+                "user": other_user,
+                "last_message": message.text,
+                "last_time": message.created_at,
+                "unread_count": unread_count,
+            }
+            seen[other_user.id] = entry
+            chat_data.append(entry)
+
     context = {
-        "chat_users": chat_users
+        "chat_data": chat_data
     }
     return render(request, "social/chat_list.html", context)
 

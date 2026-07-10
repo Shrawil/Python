@@ -166,66 +166,57 @@
     <button type="submit">Send</button>
   </form>
 </div>
-
 <script>
   const messagesBox = document.getElementById('messages');
   const otherUsername = "{{ other_user.username }}";
-  let lastTimestamp = null;
+  const currentUsername = "{{ request.user.username }}";
+  let lastId = parseInt(messagesBox.dataset.lastId || '0');
 
-  // grab timestamp of last message already on page, if any
-  const existingBubbles = messagesBox.querySelectorAll('.bubble-row');
-  if (existingBubbles.length > 0) {
-    lastTimestamp = existingBubbles[existingBubbles.length - 1].dataset.timestamp || null;
-  }
-
-  function appendMessage(msg) {
+  function appendMessage(sender, text, isMe, id) {
     const row = document.createElement('div');
-    row.className = 'bubble-row ' + (msg.is_me ? 'sent' : 'received');
-    row.dataset.timestamp = msg.timestamp;
+    row.className = 'bubble-row ' + (isMe ? 'sent' : 'received');
+    if (id) row.dataset.id = id;
     row.innerHTML = `
       <div class="bubble">
-        <span class="sender-name">${msg.sender}</span>
-        ${msg.text}
+        <span class="sender-name">${sender}</span>
+        ${text}
       </div>`;
     messagesBox.appendChild(row);
     messagesBox.scrollTop = messagesBox.scrollHeight;
   }
 
   async function pollMessages() {
-    let url = `/social/chat/${otherUsername}/poll/`;
-    if (lastTimestamp) url += `?after=${encodeURIComponent(lastTimestamp)}`;
-
     try {
-      const res = await fetch(url);
+      const res = await fetch(`/social/chat/${otherUsername}/poll/?after_id=${lastId}`);
       const data = await res.json();
-      if (data.messages.length > 0) {
-        data.messages.forEach(appendMessage);
-        lastTimestamp = data.messages[data.messages.length - 1].timestamp;
-      }
+      data.messages.forEach(msg => {
+        appendMessage(msg.sender, msg.text, msg.is_me, msg.id);
+        lastId = msg.id;
+      });
     } catch (err) {
       console.error('Polling failed:', err);
     }
   }
 
-  setInterval(pollMessages, 2000); // check every 2 seconds
+  setInterval(pollMessages, 2000);
 
-  // send message without full page reload
   const form = document.querySelector('.chat-form');
   form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const input = form.querySelector('input[name="message"]');
-    const text = input.value.trim();
-    if (!text) return;
+      e.preventDefault();
+      const input = form.querySelector('input[name="message"]');
+      const text = input.value.trim();
+      if (!text) return;
 
-    const formData = new FormData(form);
-    await fetch(window.location.pathname, {
-      method: 'POST',
-      body: formData,
-      headers: { 'X-Requested-With': 'XMLHttpRequest' }
-    });
+      const formData = new FormData(form);   // snapshot FIRST, while input still has the text
+      input.value = '';                      // clear AFTER snapshot is taken
 
-    input.value = '';
-    pollMessages(); // fetch immediately instead of waiting for interval
+      await fetch(window.location.pathname, {
+        method: 'POST',
+        body: formData,
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+      });
+
+      pollMessages();
   });
 
   messagesBox.scrollTop = messagesBox.scrollHeight;

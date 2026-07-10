@@ -22,7 +22,7 @@
 
             <div class="pfp-section">
 
-                <img src="{{ request.user.profile.pfp.url }}" alt="Profile Picture">
+                <img id="pfp-preview" src="{{ request.user.profile.pfp.url }}" alt="Profile Picture">
 
                 {{ form.pfp }}
 
@@ -34,40 +34,23 @@
             </div>
 
             <div class="field">
-
                 <label>Bio</label>
-
                 {{form.bio}}
-
             </div>
 
             <div class="field">
-
                 <label>Website</label>
-
                 {{form.website}}
-
-
             </div>
 
             <div class="field">
-
                 <label>Location</label>
-
                 {{form.location}}
-
             </div>
 
             <div class="buttons">
-
-                <a href="{% url 'me' %}" class="cancel-btn">
-                    Cancel
-                </a>
-
-                <button type="submit" class="save-btn">
-                    Save Changes
-                </button>
-
+                <a href="{% url 'me' %}" class="cancel-btn">Cancel</a>
+                <button type="submit" class="save-btn">Save Changes</button>
             </div>
 
         </form>
@@ -75,4 +58,24 @@
     </div>
 
 </div>
+
+<script>
+    const pfpInput = document.getElementById('{{ form.pfp.id_for_label }}');
+    const pfpPreview = document.getElementById('pfp-preview');
+    const originalSrc = pfpPreview.src;
+
+    pfpInput.addEventListener('change', function () {
+        const file = this.files[0];
+        if (!file) {
+            pfpPreview.src = originalSrc;
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            pfpPreview.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+</script>
 {% endblock %}
