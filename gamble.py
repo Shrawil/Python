@@ -37,18 +37,18 @@ def gamble(balance):
     print("[2] Medium (Probability : 30% | x3)")
     print("[3] Hard (Probability : 10% | x5)")
     print(f"[4] Feeling lucky (Probability : 1% | x10)")
+    print("[5] Home")
     # To make sure user only enters an integer
     while True:
         try:
             difficulty = int(input(">"))
-            if difficulty > 4 or difficulty < 1:
+            if difficulty > 5 or difficulty < 1:
                 print("Please choose between 1-4!")
             elif difficulty <= 0:
                 print("You don't have enough money to enter!")
                 break
             else:
-                balance = runGamble(balance, difficulty)
-                break
+                return(runGamble(balance, difficulty))
         except TypeError:
             print("Please enter a valid integer.")
     return balance
