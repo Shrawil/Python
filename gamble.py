@@ -28,6 +28,7 @@ def runGamble(bal, diff):
         print(f"You lost! -{betAmount}")
     else:
         print(f"You won! +{cur}")
+    return balance
     
 
 def gamble(balance):
@@ -46,10 +47,11 @@ def gamble(balance):
                 print("You don't have enough money to enter!")
                 break
             else:
-                runGamble(balance, difficulty)
+                balance = runGamble(balance, difficulty)
                 break
         except TypeError:
             print("Please enter a valid integer.")
+    return balance
     
 def checkBalance(balance):
     print(f"Current balance : {balance}.")
@@ -61,7 +63,7 @@ def main(choice):
         print("[1] Gamble | [2] Balance | [3] Exit")
         choice = int(input(">"))
         if choice == 1:
-            gamble(balance)
+            balance = gamble(balance)
         elif choice == 2:
             checkBalance(balance)
         elif choice == 3:
