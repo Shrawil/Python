@@ -9,26 +9,26 @@ def runGamble(bal, diff):
                 break
             else:
                 print("Bet amount should be greater than 0 and smaller than or equal to your current ballance!")
-        except TypeError:
+        except ValueError:
             print("Please enter a valid integer!")
     num = random.randint(1, 101)
     if diff == 1:
-        if num <= 50: bal += betAmount
+        if num <= 50: bal += betAmount * 2
         else: bal -= betAmount
     elif diff == 2:
-        if num <= 30: bal += betAmount 
+        if num <= 30: bal += betAmount * 3
         else: bal -= betAmount
     elif diff == 3:
-        if num <= 10: bal += betAmount 
+        if num <= 10: bal += betAmount * 5
         else: bal -= betAmount
     elif diff == 4:
-        if num == 1: bal += betAmount
+        if num == 1: bal += betAmount * 10
         else: bal -= betAmount
     if cur > bal:
         print(f"You lost! -{betAmount}")
     else:
         print(f"You won! +{cur}")
-    return balance
+    return bal
     
 
 def gamble(balance):
@@ -43,13 +43,15 @@ def gamble(balance):
         try:
             difficulty = int(input(">"))
             if difficulty > 5 or difficulty < 1:
-                print("Please choose between 1-4!")
-            elif difficulty <= 0:
+                print("Please choose between 1-5!")
+            elif balance <= 0:
                 print("You don't have enough money to enter!")
                 break
+            elif difficulty == 5:
+                return balance
             else:
                 return(runGamble(balance, difficulty))
-        except TypeError:
+        except ValueError:
             print("Please enter a valid integer.")
     return balance
     
@@ -60,17 +62,19 @@ def main(choice):
     balance = 1000
     print("Welcome to gamble.py!")
     while True:
-        print("[1] Gamble | [2] Balance | [3] Exit")
-        choice = int(input(">"))
-        if choice == 1:
-            balance = gamble(balance)
-        elif choice == 2:
-            checkBalance(balance)
-        elif choice == 3:
-            break
-        else: 
-            print("Invalid input recieved!")
-    
+        try:
+            print("[1] Gamble | [2] Balance | [3] Exit")
+            choice = int(input(">"))
+            if choice == 1:
+                balance = gamble(balance)
+            elif choice == 2:
+                checkBalance(balance)
+            elif choice == 3:
+                break
+            else: 
+                print("Invalid input recieved!")
+        except ValueError:
+            print("Please enter a valid interger!")
 
 if __name__ == '__main__':
     choice = 1
