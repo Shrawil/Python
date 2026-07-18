@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>University | Departments</title>
+    </head>
+    <body>
+        <h1>All department names : </h1>
+        <ul>
+            {% for dep in departments %}
+            <li>{{ dep }}</li>
+            {% endfor %}
+        </ul>
+        <a href='{% url 'add_dep' %}'>Add Departments</a>
+    </body>
+</html>
