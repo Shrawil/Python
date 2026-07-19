@@ -9,10 +9,10 @@
         <a href='{% url 'show_students' %}'>Students</a>
         <h1>Staff names : </h1>
         <ul>
-            {% for staffs in staff %}
-            <li>{{ staffs }}</li>
+            {% for students in student %}
+            <li>{{ students }}</li>
             {% endfor %}
         </ul>
-        <a href='{% url 'add_staff' %}'>Add Staff</a>
+        <a href='{% url 'add_students' %}'>Add Students</a>
     </body>
 </html>
