@@ -2,7 +2,7 @@ from django.db import models
 from department.models import Department
 
 CHOICE = [
-    (1, '1st Year'),
+    (1, 'First Year'),
     (2, 'Second Year'),
     (3, 'Third Year'),
 ]
