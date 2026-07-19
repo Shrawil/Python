@@ -1,7 +1,11 @@
 from django.db import models
 from department.models import Department
 
-CHOICE = [1,2,3]
+CHOICE = [
+    (1, '1st Year'),
+    (2, 'Second Year'),
+    (3, 'Third Year'),
+]
 
 class Students(models.Model):
     student_name = models.CharField(max_length=30)
