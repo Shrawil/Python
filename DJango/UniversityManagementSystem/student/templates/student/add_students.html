@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>University | Add Staff</title>
+    </head>
+    <body>
+        <a href='{% url 'show_staff' %}'>Staff</a>
+        <a href='{% url 'show_dep' %}'>Departments</a>
+        <a href='{% url 'show_students' %}'>Students</a>
+        <h1>Add student : </h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+        </form>
+        <button type='submit'>Submit</button>
+    </body>
+</html>
