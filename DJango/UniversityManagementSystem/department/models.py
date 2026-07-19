@@ -6,4 +6,4 @@ class Department(models.Model):
     dep_description = models.TextField()
 
     def __str__(self):
-        return(f("{self.id} : {self.dep_name} - [{self.dep_description}]"))
+        return(f"{self.id} : {self.dep_name} - [{self.dep_description}]")

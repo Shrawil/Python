@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>University | Staff</title>
+    </head>
+    <body>
+        <a href='{% url 'show_dep' %}'>Departments</a>
+        <h1>Staff names : </h1>
+        <ul>
+            {% for staffs in staff %}
+            <li>{{ staffs }}</li>
+            {% endfor %}
+        </ul>
+        <a href='{% url 'add_staff' %}'>Add Staff</a>
+    </body>
+</html>
