@@ -18,6 +18,6 @@ class Students(models.Model):
             yr = 'st'
         elif year == 2:
             yr = 'nd'
-        elif year = 3:
+        elif year == 3:
             yr = 'rd'
         return f"{self.student_name} | {self.department.dep_name} {year}{yr} Year"
