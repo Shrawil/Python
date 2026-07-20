@@ -5,9 +5,11 @@ def formula(shape, operation, *args):
     if shape == 1:
         # Operations - [1] Area | [2] Circumference
         if operation == 1:
-            print(f"Area of a circle with radius {args[0]} is {2 * math.PI * args[0]}!")
+            area = 2 * math.pi * args[0]
+            print(f"Area of a circle with radius {args[0]} is {area:.2f}!")
         else:
-            print(f"Circumference of a circle with radius {args[0]} is {math.PI * pow(args[0], 2)}!")
+            circumference = math.pi * pow(args[0], 2)
+            print(f"Circumference of a circle with radius {args[0]} is {circumference:.2f}!")
     elif shape == 2:
         # Operations - [1] Area | [2] Perimeter
         if operation == 1:
