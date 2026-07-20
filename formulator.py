@@ -16,6 +16,12 @@ def formula(shape, operation, *args):
             print(f"Permeter of square with side {args[0]} is {4 * args[0]}!")
     elif shape == 3:
         # Operations - [1] Area | [2] Perimeter
+        if operation == 1:
+            print(f"Area of rectangle with length {args[0]} and breadth {args[1]} is {args[0] * args[1]}!")
+        else:
+            print(f"Permeter of rectangle with length {args[0]} and breadth {args[1]} is {2 * (args[0] + args[1])}!")
+    else:
+        # Operations - [1] Area | [2] Permeter
         pass
 
 
