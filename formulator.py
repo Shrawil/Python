@@ -1,9 +1,17 @@
 import math
 
 def formula(shape, operation, *args):
-    print(shape, operation)
-    for arguments in args:
-        print(arguments)
+    # Shapes - [1] Circle | [2] Square | [3] Rectangle | [4] Triangle
+    if shape == 1:
+        # Operations - [1] Area | [2] Circumference
+        if operation == 1:
+            print(f"Area of a circle with radius {args[0]} is {2 * math.PI * args[0]}!")
+        else:
+            print(f"Circumference of a circle with radius {args[0]} is {math.PI * pow(args[0], 2)}")
+    elif shape == 4:
+        # Operations - [1] Area | [2] Permeter
+        if operation == 1:
+            print()
 
 def main():
     # Asking for the shape
@@ -24,7 +32,7 @@ def main():
         while True:
             try: 
                 opr = int(input("Enter a number > "))
-                if shape > 0 and shape < 3:
+                if opr > 0 and opr < 3:
                     try:
                         radius = int(input("Enter radius : "))
                     except ValueError:
@@ -34,33 +42,64 @@ def main():
             except ValueError:
                 print("Please enter a valid integer.")
 
+    # Square
+    elif shape == 2:
+        print("[1] Area | [2] Permeter")
+        while True:
+            try: 
+                opr = int(input("Enter a number > "))
+                if opr > 2 or opr < 1:
+                    print("Please choose between 1 and 2.")
+                else:
+                    try: 
+                        side = int(input("Enter value for base : "))
+                    except ValueError:
+                        print("Please enter valid integers for side of square.")
+                    formula(shape, opr, side)
+            except ValueError:
+                print("Please enter a valid integer.")
+
+    # Rectangle
+    elif shape == 3:
+        print("[1] Area | [2] Permeter")
+        while True:
+            try: 
+                opr = int(input("Enter a number > "))
+                if opr > 2 or opr < 1:
+                    print("Please choose between 1 and 2.")
+                else:
+                    try: 
+                        length = int(input("Enter value for length : "))
+                        breadth = int(input("Enter value for breadth : "))
+                    except ValueError:
+                        print("Please enter valid integers for sides of rectangle.")
+                    formula(shape, opr, length, breadth)
+            except ValueError:
+                print("Please enter a valid integer.")
+
     # Triangle
     elif shape == 4:
         print("[1] Area | [2] Perimeter")
         while True:
             try: 
                 opr = int(input("Enter a number > "))
-                if shape > 0 and shape < 3:
+                if opr == 1:
                     try: 
                         base = int(input("Enter value for base : "))
                         height = int(input("Enter value for height : "))
                     except ValueError:
                         print("Please enter valid integers for base and height of the triangle.")
-            except ValueError:
-                print("Please enter a valid integer.")
-
-    # Square and Rectangle
-    else:
-        print("[1] Area | [2] Perimeter")
-        while True:
-            try: 
-                opr = int(input("Enter a number > "))
-                if shape > 0 and shape < 3:
-                    try: 
-                        length = int(input("Enter value for length : "))
-                        breadth = int(input("Enter value for breadth : "))
+                    formula(shape, opr, base, height)
+                elif opr == 2:
+                    try:
+                        side1 = int(input("Enter value for side 1 : "))
+                        side2 = int(input("Enter value for side 2 : "))
+                        side3 = int(input("Enter value for side 3 : "))
                     except ValueError:
-                        print(f"Please enter valid integers for length and breadth of the {shape}.")
+                        print("Please enter valid values for side of triangle.")
+                    formula(shape, opr, side1, side2, side3)
+                else:
+                    print("Please choose between 1 and 2.")
             except ValueError:
                 print("Please enter a valid integer.")
 
