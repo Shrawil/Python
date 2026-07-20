@@ -22,7 +22,10 @@ def formula(shape, operation, *args):
             print(f"Permeter of rectangle with length {args[0]} and breadth {args[1]} is {2 * (args[0] + args[1])}!")
     else:
         # Operations - [1] Area | [2] Permeter
-        pass
+        if operation == 1:
+            print(f"Area of triangle with base {args[0]} and height {args[1]} is {(args[0] * args[1])/2}!")
+        else:
+            print(f"Permeter of triangle with sides {args[0]}, {args[1]}, {args[2]} is {args[0] + args[1] + args[2]}!")
 
 
 def main():
