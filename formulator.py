@@ -7,11 +7,17 @@ def formula(shape, operation, *args):
         if operation == 1:
             print(f"Area of a circle with radius {args[0]} is {2 * math.PI * args[0]}!")
         else:
-            print(f"Circumference of a circle with radius {args[0]} is {math.PI * pow(args[0], 2)}")
-    elif shape == 4:
-        # Operations - [1] Area | [2] Permeter
+            print(f"Circumference of a circle with radius {args[0]} is {math.PI * pow(args[0], 2)}!")
+    elif shape == 2:
+        # Operations - [1] Area | [2] Perimeter
         if operation == 1:
-            print()
+            print(f"Area of square with side {args[0]} is {args[0] * args[0]}!")
+        else:
+            print(f"Permeter of square with side {args[0]} is {4 * args[0]}!")
+    elif shape == 3:
+        # Operations - [1] Area | [2] Perimeter
+        pass
+
 
 def main():
     # Asking for the shape
