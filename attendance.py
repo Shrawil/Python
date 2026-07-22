@@ -20,7 +20,9 @@ def main():
         choice = get_and_check('[1] Take Attendance | [2] Exit > ', 1, 2)
         if choice == 1:
             present, absent = take_attendance()
+            print(f"Total number of presentees : {present}.\nTotal number of absentees : {absent}.")
         elif choice == 2:
+            print("Thanks for using this program!")
             break
     
 
