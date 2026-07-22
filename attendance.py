@@ -22,8 +22,8 @@ def take_attendance(present: list, absent: list):
 
 def main():
     # Will hold all roll numbers.
-    present = None
-    absent = None
+    present = list()
+    absent = list()
     
     while True:
         choice = get_and_check('[1] Take Attendance | [2] Show Presentees | [3] Show Absentees | [4] Exit > ')
@@ -38,18 +38,20 @@ def main():
             if present is None or absent is None:
                 print("Take attendance first.")
             else:
-                print("Present students roll numbers : ")
+                print("Present students roll numbers : ", end="")
                 for roll in present:
                     print(roll, end=" ")
+                print()
 
         # Print all absent roll numbers.
         elif choice == 3:
             if present is None or absent is None:
                 print("Take attendance first.")
             else:
-                print("Absent students roll numbers : ")
+                print("Absent students roll numbers : ", end="")
                 for roll in absent:
                     print(roll, end=" ")
+                print()
 
         # Exit program.
         elif choice == 4:
@@ -58,9 +60,7 @@ def main():
 
         # Invalid input recieved.
         else:
-            print("Please choose between 1 and 2.")
-            choice = get_and_check('[1] Take Attendance | [2] Exit > ')
-    
+            print("Please choose between 1, 2, 3, 4.")
 
 if __name__ == '__main__':
     main()
