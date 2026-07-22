@@ -31,7 +31,7 @@ def main():
         # Call take_attendance function.
         if choice == 1:
             present, absent = take_attendance(present, absent)
-            print(f"Total number of presentees : {present}.\nTotal number of absentees : {absent}.")
+            print(f"Total number of presentees : {len(present)}.\nTotal number of absentees : {len(absent)}.")
 
         # Print all present roll numbers.
         elif choice == 2:
