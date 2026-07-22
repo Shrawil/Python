@@ -1,5 +1,3 @@
-attendance = False
-
 def get_and_check(msg: str):
     while True:
         try:
@@ -9,10 +7,8 @@ def get_and_check(msg: str):
             print("Please enter a valid value.")
 
 
-def take_attendance():
-    # Will hold all roll numbers
-    present = list()
-    absent = list()
+def take_attendance(present: list, absent: list):
+
 
     total_students = get_and_check('Enter number of students : ')
     print("Type 1 if present. [Note: Any other number than 1 will mark the roll number as absent.]")
@@ -22,22 +18,24 @@ def take_attendance():
         if is_present == 1: present.append(i+1)
         else: absent.append(i+1)
 
-    attendance = True
-
     return present, absent
 
 def main():
+    # Will hold all roll numbers.
+    present = None
+    absent = None
+    
     while True:
         choice = get_and_check('[1] Take Attendance | [2] Show Presentees | [3] Show Absentees | [4] Exit > ')
         
         # Call take_attendance function.
         if choice == 1:
-            present, absent = take_attendance()
+            present, absent = take_attendance(present, absent)
             print(f"Total number of presentees : {present}.\nTotal number of absentees : {absent}.")
 
         # Print all present roll numbers.
         elif choice == 2:
-            if not attendance:
+            if present is None or absent is None:
                 print("Take attendance first.")
             else:
                 print("Present students roll numbers : ")
@@ -46,7 +44,7 @@ def main():
 
         # Print all absent roll numbers.
         elif choice == 3:
-            if not attendance:
+            if present is None or absent is None:
                 print("Take attendance first.")
             else:
                 print("Absent students roll numbers : ")
