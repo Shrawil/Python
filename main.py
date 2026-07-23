@@ -1,3 +1,5 @@
+
+
 '''
 num = int(input("Enter a number : "))
 copy = num
