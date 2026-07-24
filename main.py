@@ -1,4 +1,44 @@
 
+'''
+a = 10 
+print(a is 10) # Will run with warning.
+'''
+
+'''
+a = 6 
+b = 10
+
+a = (a + b)
+b = (a - b)
+a = (a - b)
+
+print(a, b)
+'''
+
+'''
+# String functions 
+
+a = 'XYZ abc'
+
+print(len(a))
+print(a.swapcase())
+print(a.split())
+print(a.title())
+print(a.capitalize())
+print(a.upper())
+print(a.lower())
+print(a.index('X'))
+print(a.find('a'))
+print(a.count('Y'))
+# print(a[start:stop:step])
+print(a[1:len(a):2])
+print('SITAPUR'[7:2:-2])
+'''
+
+'''
+# Ternary operator
+print("If is true" if condition else "If is false")
+'''
 
 '''
 num = int(input("Enter a number : "))
@@ -10,7 +50,7 @@ while copy > 0:
     digit = copy % 10
     rev = (rev * 10) + digit
     copy = copy // 10
-
+ 
 print(f"{num} reversed = {rev}")
 
 if num == rev:

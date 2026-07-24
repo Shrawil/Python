@@ -4,7 +4,7 @@
 # "Buzz". For numbers which are multiples of both 
 # three and five print "FizzBuzz".
 
-for i in range(1, 51):
+for i in range(1, 50+1):
     output = ""
     if i % 3 == 0:
         output += "Fizz"
