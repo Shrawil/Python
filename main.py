@@ -1,3 +1,73 @@
+length = int(input("Enter a length : "))
+names = list()
+for i in range(length):
+    names.append(input("Enter a name : "))
+for name in names:
+    if name[0] == name[len(name)-1]:
+        print(f"{name} Start = End")
+
+'''
+
+name = input("Enter your name : ")
+name = name.lower()
+
+if name[0] == name[len(name)-1]:
+    print("Name starts and ends with same character.")
+else:
+    print("Name does not start and end with same character.")
+'''
+
+'''
+items = input("Enter numbers for list [Seperated by space ]: ")
+temp = items.split(',')
+ls = list()
+for item in temp:
+    if item.isnumeric():
+        ls.append(int(item))
+    elif item.isalpha() or item.isalnum():
+        ls.append(item)
+print(ls)
+'''
+
+'''
+a = [1,2,4,5]
+# Get max value in a
+print(max(a))
+# Get min value in a 
+print(min(a))
+# Print all values in a 
+print(a)
+# Append a value in a 
+a.append(6) # Add at last
+print(a)
+# Append at specific index.
+#    index, value
+a.insert(2, 3)
+print(a)
+# Removes and return last value from list
+print('Poped = ', a.pop())
+print(a)
+# Remove a value
+a.remove(1)
+# Sorts a list
+a.sort()
+print(a)
+a.extend([6,7,8,9])
+print(a)
+'''
+
+'''
+a = [1,2,3,4,5,6,7]
+even = list()
+for i in a:
+    if i % 2 == 0:
+       even.append(i)
+print(even) 
+'''
+
+#a = eval(input('>'))
+
+#print(type(a))
 
 '''
 a = 10 
