@@ -13,14 +13,19 @@ def rotate(ls, t):
         for i in range(len(ls)-1):
            ls[i] = ls[i+1]
         ls[-1] = temp
-        
     return ls 
+
+def rotate2(ls, t):
+    for i in range(t):
+        ls.append(ls.pop(0))
+    return ls
 
 def main():
     ls = [1,2,3,4,5,6,7]
     print(ls)
-    # Pass the list and the times you want to rotate the list.
     t = int(input("Enter number of times you want to rotate the list : "))
+    print(rotate2(ls,t))
+    # Pass the list and the times you want to rotate the list.
     print(rotate(ls,t))
     '''
     for i in range(1000):

@@ -1,3 +1,55 @@
+a = [1,2,3,4,4,5,5,6]
+
+a = set(a)
+
+print(a)
+
+'''
+a = (1,2,3,4,[1,2,3],)
+print(a)
+a[4][0] = -1
+print(a)
+'''
+
+'''
+name = input("Enter your name : ")
+args = name.split()
+shortName = ''
+
+for i in range(len(args)-1):
+    shortName += f"{args[i][0]}."
+shortName += args[-1]
+
+print(shortName.title())
+'''
+
+'''
+a = [i for i in range(1,10)]
+print(a)
+
+c = [i**2 for i in a if i % 2 == 0]
+print(c)
+
+d = [i for i in a]
+print(d)
+
+'''
+
+'''
+ls = [1,6,2,2,5,1,8]
+
+# Sort the list 
+ls = sorted(ls)
+
+ls2 = [ls[0]]
+for item in ls:
+    if item != ls2[-1]:
+        ls2.append(item)
+
+print(ls, ls2)
+'''
+
+'''
 length = int(input("Enter a length : "))
 names = list()
 for i in range(length):
@@ -5,6 +57,7 @@ for i in range(length):
 for name in names:
     if name[0] == name[len(name)-1]:
         print(f"{name} Start = End")
+'''
 
 '''
 
