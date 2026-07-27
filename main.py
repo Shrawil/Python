@@ -1,3 +1,8 @@
+from myLib.get_and_check import get_and_check
+
+age = get_and_check('Age : ', int)
+print(age)
+
 '''
 a = [1,2,3,4,4,5,5,6]
 a = set(a)
