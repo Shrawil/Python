@@ -17,7 +17,6 @@ def eval_list(msg : str):
                         res.append(False)
                     else:
                         res.append(item)
-
     return res
 
 
