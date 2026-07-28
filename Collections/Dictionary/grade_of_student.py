@@ -7,7 +7,6 @@ def get_grades(names: list):
         res[name] = grade
     return res
 
-
 def main():
     names = eval_list("Enter name of students : ")
     grade_dict = get_grades(names)

@@ -1,5 +1,14 @@
-# User defined dictionary.
+a = {
+    'a':1,
+    'b':2
+}
 
+print(a)
+print(a.pop('a'))
+print(a)
+
+# User defined dictionary.
+'''
 length = int(input("Enter length of dictionary : "))
 d = dict()
 
@@ -10,7 +19,7 @@ for i in range(length):
     d[key] = value
 
 print(d)
-
+'''
 
 '''
 a = [3,4,5,3,4,7,8,6,4,5]
