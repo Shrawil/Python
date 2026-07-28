@@ -1,7 +1,97 @@
-from myLib.get_and_check import get_and_check
+# User defined dictionary.
+
+length = int(input("Enter length of dictionary : "))
+d = dict()
+
+for i in range(length):
+    key = input("Enter a key : ")
+    value = eval(input(f"Enter value for {key} : "))
+
+    d[key] = value
+
+print(d)
+
+
+'''
+a = [3,4,5,3,4,7,8,6,4,5]
+
+count_dict = {}
+
+for i in a:
+    count_dict[i] = a.count(i)
+
+print(count_dict)
+'''
+
+'''
+visited = list()
+for i in a:
+    if i not in visited:
+        print(i, ' count = ', a.count(i))
+        visited.append(i)
+'''
+
+'''
+d = {
+    'name':'xyz',
+    'age':19,
+}
+
+print(d.pop('name'))
+print(d)
+d['name'] = 'abc'
+
+print(d)
+'''
+
+'''
+a = [2,3,4,5,6,7]
+
+for idx, val in enumerate(a):
+    print(idx, val)'''
+
+'''
+
+# Dictionary - Stores value in key value pairs.
+
+d = {
+    'name':'xyz',
+    'age':19,
+}
+
+print(d, type(d))
+print('d.key() : ', d.keys())
+print('d.values() : ', d.values())
+print('d.items() : ', d.items())
+
+d['name'] = 'abc'
+d['city'] = 'Sitapur'
+
+print(f"d.get('name') : {d.get('name')}")
+'''
+'''length = int(input("Enter number of items in list : "))
+a = []
+for i in range(length):
+    num = int(input(f"Item #{i+1} : "))
+    a.append(num)
+
+a = [1,2,3,4,5,6,7]
+
+for i in range(len(a)-3):
+    if a[i] == a[i+1]-1 and a[i] == a[i+2]-2 and a[i] == a[i+3]-3:
+        print(a[i], a[i+1], a[i+2], a[i+3])
+'''
+ 
+
+'''a = (1,2,3,4,5)
+
+print(a.count(1))
+print(a.index(1))'''
+
+'''from myLib.easyInput import get_and_check
 
 age = get_and_check('Age : ', int)
-print(age)
+print(age)'''
 
 '''
 a = [1,2,3,4,4,5,5,6]
