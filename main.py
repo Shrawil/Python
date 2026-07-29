@@ -1,3 +1,46 @@
+def factorial(num):
+    if num == 1:
+        return 1
+    return num*factorial(num-1)
+
+fact = factorial(5)
+print(fact)
+
+'''
+a = [3,4,6,7,8,3,1]
+max = a[0]
+min = a[0]
+
+for i in a:
+    if max < i:
+        max = i
+    elif max > i:
+        min = i
+
+print(max, min)
+'''
+
+'''
+a = {'name':'xyz', 'marks':{'Maths':40, 'Hindi':80}}
+
+print(a['marks']['Maths'])
+'''
+
+'''
+# WAP to reverse a name
+name = 'SHRAWIL'
+rev = ''
+
+# name = name.reversed()
+# print(name[::-1])
+
+for i in range(len(name)-1, -1, -1):
+    rev += name[i]
+
+print(rev)
+'''
+
+'''
 a = {
     'a':1,
     'b':2
@@ -6,6 +49,7 @@ a = {
 print(a)
 print(a.pop('a'))
 print(a)
+'''
 
 # User defined dictionary.
 '''
