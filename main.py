@@ -1,3 +1,27 @@
+import math
+
+print(math.factorial(5))
+print(math.sqrt(4))
+print(math.cbrt(9))
+print(math.pow(2,3))
+print(math.pi)
+print(math.sin(0))
+print(math.cos(0))
+print(math.tan(45))
+
+'''
+def largest(ls):
+    l = ls[0]
+    for i in ls:
+        if i > l:
+            l = i 
+    return l
+
+l = largest([1,2,3,4,5])
+print(largest(l))
+'''
+
+'''
 def factorial(num):
     if num == 1:
         return 1
@@ -5,6 +29,7 @@ def factorial(num):
 
 fact = factorial(5)
 print(fact)
+'''
 
 '''
 a = [3,4,6,7,8,3,1]
