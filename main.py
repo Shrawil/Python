@@ -1,3 +1,75 @@
+
+
+'''
+a = [5,4,3,8,7,4,9,2,7,2,6]
+
+b = []
+
+for i in range(0, len(a)-1, 2):
+    b.append(a[i+1])
+    b.append(a[i])
+
+if len(b) < len(a):
+    b.append(a[-1])
+
+print(a)
+print(b)
+'''
+
+'''
+def AC(f):
+    def wrapper():
+        print("A")
+        f()
+        print("C")
+    return wrapper
+
+@greet 
+def B():
+    print("B")
+
+B()
+'''
+
+'''
+def s(num):
+    if num >= 5:
+        return 5
+    return num + s(num+1)
+
+print(s(2))
+'''
+
+'''
+def fact(n):
+    if n <= 1:
+        return 1
+    return n * fact(n-1)
+
+print(fact(5))
+'''
+
+'''
+def isAllEven(num):
+    for i in str(num):
+        if int(i) % 2 != 0:
+            return False
+    return True 
+
+for i in range(200, 401):
+    if isAllEven(i):
+        print(i)
+'''
+
+'''
+def x():
+    return 1, 2
+
+a, b = x()
+print(a,b)
+'''
+
+'''
 import math
 
 print(math.factorial(5))
@@ -8,7 +80,7 @@ print(math.pi)
 print(math.sin(0))
 print(math.cos(0))
 print(math.tan(45))
-
+'''
 '''
 def largest(ls):
     l = ls[0]
