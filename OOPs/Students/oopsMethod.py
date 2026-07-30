@@ -88,5 +88,4 @@ for student in Student.students:
         elif i > 50: grade = 'E'
         else: grade = 'F'
         print(f"Grade  : {grade}", end=" ")
-
         
