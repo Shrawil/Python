@@ -1,4 +1,138 @@
+for i in range(5):
+    for j in range(4):
+        print(' ', end='')
+    for j in range(i+1):
+        print(chr(j+65), end=' ')
+    print()
 
+'''
+a = [2,3,4,5,6,7,8,9]
+target = 10`
+
+for i in range(0, len(a)):
+    for j in range(i+1, len(a)):
+        if a[i]+a[j] == target:
+            print(f"{a[i]}, {a[j]}")
+
+'''
+
+'''
+a = [1,0,3,0,4,5,4,3,0,0,1,2]
+res = [] 
+
+for i in a:
+    if i != 0:
+        res.append(i)
+
+res.extend([0]*(len(a)-len(res)))
+print(res)
+'''
+
+'''
+for i in range(len(a)):
+    if i == 0:
+        a.append(a.pop(a[i]))
+print(a)
+'''
+
+'''
+a = 'aabbccc'
+b = ''
+count = 1
+
+for i in range(0, len(a)-1):
+    if a[i] == a[i+1]:
+        count += 1
+    else:
+        b += a[i]
+        b += str(count)
+        count = 1
+b += a[-1]+str(count)
+'''
+
+'''
+for i in range(len(a)):
+    count = 0
+    b += a[i]
+    for j in range(i, len(a)):
+        if b[i] != a[j]:
+            b += str(count)
+            b += a[j]
+        else:
+            count += 1
+'''
+    
+'''
+string = 'a2b3c2'
+for i in range(0, len(string), 2):
+    print(string[i]*int(string[i+1]), end='')
+'''
+
+
+'''
+for i in range(0, len(string), 2):
+    for j in range(int(string[i+1])):
+        print(string[i], end='')
+
+'''
+
+'''
+str1 = 'aabbcc'
+str2 = 'ccaaab'
+
+n1 = sorted(str1)
+n2 = sorted(str2)
+
+if (n1 == n2):
+    print(f"{str1} is anagram!")
+else:
+    print(f"{str1} is not anagram!")
+'''
+
+'''
+s = 'tHIS@iS@mY@cOUNTRY'
+
+ls = s.split('@')
+new = ''
+for i in ls:
+    new += i 
+    new += ' '
+
+print(new.title())
+# s = s.replace('@', '.')
+'''
+
+'''
+students = [
+    ['S1', 19, [
+        ['Hindi',84], ['English', 77], ['Maths', 86], ['Science', 76], ['Art', 79]
+    ]],
+    ['S2', 20, [
+        ['Hindi',68], ['English', 86], ['Maths', 96], ['Science', 83], ['Art', 75]
+    ]]
+]
+
+for i in students:
+    print(f"{i[0]} - {sorted(i[2], key=lambda x : x[1], reverse=True)}")
+
+for i in students:
+    print(f"{i[0]} - {sorted(i[2], key=lambda x : x[1], reverse=False)}")
+
+for i in students:
+    print(max(i[2], key=lambda x : x[1]))
+
+for i in students:
+    print(min(i[2], key=lambda x : x[1]))
+
+for i in students:
+    print(min(i[2], key=lambda x : x[1]))
+
+for i in students:
+    print(sum(marks[1] for marks in i[2]))
+
+for i in students:
+    print(sum(marks[1] for marks in i[2])/5)
+'''
 
 '''
 a = [5,4,3,8,7,4,9,2,7,2,6]
