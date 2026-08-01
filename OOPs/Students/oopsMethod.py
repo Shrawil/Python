@@ -35,49 +35,49 @@ for i in range(n):
 for student in Student.students:
     print(student)
 
-print("Subject with highest marks - ")
+print("\nSubject with highest marks - ")
 for student in Student.students:
     print(f"{student[0]} - {max(student[2].items(), key=lambda x : x[1])}")
 
-print("Subject with lowest marks - ")
+print("\nSubject with lowest marks - ")
 for student in Student.students:
     print(f"{student[0]} - {min(student[2].items(), key=lambda x : x[1])}")
 
-print("Marks in ASC order - ")
+print("\nMarks in ASC order - ")
 for student in Student.students:
     print(f"{student[0]} - {sorted(student[2].items(), key=lambda x : x[1])}")
 
-print("Marks in DESC order - ")
+print("\nMarks in DESC order - ")
 for student in Student.students:
     print(f"{student[0]} - {sorted(student[2].items(), key=lambda x : x[1], reverse=True)}")
 
-print("Subjects student passed in - ")
+print("\nSubjects student passed in - ")
 for student in Student.students:
     total = len(list(filter(lambda x : x[1], student[2].items())))
     passed = len(list(filter(lambda x : x[1] > 50, student[2].items())))
     print(f"{student[0]} - {list(filter(lambda x : x[1] > 50, student[2].items()))} \n[Passed in {passed}]")
 
-print("Subjects student failed in - ")
+print("\nSubjects student failed in - ")
 for student in Student.students:
     total = len(list(filter(lambda x : x[1], student[2].items())))
     failed = len(list(filter(lambda x : x[1] < 50, student[2].items())))
     print(f"{student[0]} - {list(filter(lambda x : x[1] < 50, student[2].items()))} \n[Failed in {failed}]")
 
-print("Average marks of each students - ")
+print("\nAverage marks of each students - ")
 for student in Student.students:
     sum = 0
     for i in list(map(lambda x : x[1], student[2].items())):
         sum += int(i) 
     print(f"{student[0]} - Total : {sum}/500 | Avg : {sum/5}/100")
 
-print("Giving grace marks - ")
+print("\nGiving grace marks - ")
 for student in Student.students:
     for k, v in student[2].items():
         if student[2][k] + 5 < 100:
             student[2][k] += 5
     print(f"{student[0]} - {list(student[2].items())}")
 
-print("Grades based on total marks - ")
+print("\nGrades based on total marks - ")
 for student in Student.students:
     print(f"\n{student[0]} - ")
     for i in list(map(lambda x : x[1], student[2].items())):
@@ -87,5 +87,23 @@ for student in Student.students:
         elif i > 60: grade = 'D'
         elif i > 50: grade = 'E'
         else: grade = 'F'
-        print(f"Grade  : {grade}", end=" ")
-        
+        print(f"Grade  : {grade}")
+
+total = [['sub1', 0], ['sub2', 0], ['sub3', 0], ['sub4', 0], ['sub5', 0]]
+print("\n\nHighest scoring subject - ")
+for student in Student.students:
+    for m in student[2].items():
+        match m[0]:
+            case 'Sub1':
+                total[0][1] += m[1]
+            case 'Sub2':
+                total[1][1] += m[1]
+            case 'Sub3':
+                total[2][1] += m[1]
+            case 'Sub4':
+                total[3][1] += m[1]
+            case 'Sub5':
+                total[4][1] += m[1]
+                
+print(f"{max(total, key=lambda x : x[1])[0]} with {max(total, key=lambda x : x[1])[1]}/500")
+print(f"{min(total, key=lambda x : x[1])[0]} with {min(total, key=lambda x : x[1])[1]}/500")

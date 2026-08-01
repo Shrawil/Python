@@ -1,10 +1,77 @@
-for i in range(5):
+class Student:
+    def show(self):
+        print(self.name, self.age)
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+s1 = Student()
+
+'''
+class Vehicle:
+    def add(self):
+        print("Add.")
+    def mul(self):
+        print("Mul.")
+    def __init__(self, no_of_tires):
+        print("__init__")
+    
+v1 = Vehicle(4)
+v2 = Vehicle(3)
+'''
+
+'''
+day = int(input("Enter a number : "))
+match day:
+    case 1:
+        print("Sunday")
+    case 2:
+        print("Monday")
+    case 3:
+        print("Tuesday")
+    case 4:
+        print("Wednesday")
+    case 5:
+        print("Thursday")
+    case 6:
+        print("Friday")
+    case 7:
+        print("Saturday")
+    case _:
+        print("Their are 7 days in a week idiot.")
+'''
+
+'''
+ch = {}
+
+s = "ABBCCCDDD"
+
+for i in s:
+    ch[i] = s.count(i)
+
+print(ch)
+
+for i in ch:
+    if ch[i] == (min(ch.values())):
+        print(i)
+'''
+# print(sorted([4,3,2,1]))
+
+'''
+ls = [7,5,8,3,4,31,54,5]
+ls.reverse()
+print(ls)
+print(list(reversed(ls)))
+'''
+
+'''for i in range(5):
     for j in range(4):
         print(' ', end='')
     for j in range(i+1):
         print(chr(j+65), end=' ')
     print()
-
+'''
 '''
 a = [2,3,4,5,6,7,8,9]
 target = 10`
