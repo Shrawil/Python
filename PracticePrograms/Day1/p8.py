@@ -11,8 +11,8 @@ for i in range(len(ls)):
     for j in range(i+1, len(ls)):
         if ls[j] < ls[min]:
             min = j
-    if min != j:
-        temp = ls[j]
-        ls[j] = ls[min]
+    if min != i:
+        temp = ls[i]
+        ls[i] = ls[min]
         ls[min] = temp
 print(ls)
