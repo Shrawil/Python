@@ -2,7 +2,7 @@ class Library:
     books = []
     borrowed_books = []
 
-    def __init__(self, title: str, author: str, stock: int):
+    def add_book(self, title: str, author: str, stock: int):
         self.stock = stock
         if self.stock < 0: 
             print(f"No stock for book {title} by {author}.")
@@ -37,12 +37,16 @@ class Library:
         self.stock += 1
         print(self.title, self.author, self.stock)
 
-book1 = Library('Title1', 'Author1', 40)
-book2 = Library('Title2', 'Author2', 34)
-book3 = Library('Title3', 'Author3', 56)
-book4 = Library('Title4', 'Author4', 10)
-book5 = Library('Title5', 'Author5', 1)
+book1 = Library()
+book1.add_book('Title1', 'Author1', 40)
+book2 = Library()
+book2.add_book('Title2', 'Author2', 34)
+book3 = Library()
+book3.add_book('Title3', 'Author3', 56)
+book4 = Library()
+book4.add_book('Title4', 'Author4', 10)
+book5 = Library()
+book5.add_book('Title5', 'Author5', 1)
 
 book5.borrow_book()
 book5.return_book()
-
