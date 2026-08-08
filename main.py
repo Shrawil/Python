@@ -1,4 +1,140 @@
-class Student:
+print(3*'a')
+
+'''
+a = [1,2,3,4,5,6,7,8]
+n = 4
+for i in range(n):
+    a.insert(0, (a.pop()))
+print(a)
+'''
+
+'''
+a = [1, 2, 3]
+b = ['a', 'b', 'c']
+
+c = {}
+
+for i in range(len(a)):
+    c[a[i]] = b[i]
+
+print(c)
+'''
+
+
+'''
+a = 10
+num = int(input(">"))
+print(a//num)
+print("Executed Succesfully.")
+'''
+
+'''
+a = "(([]))"
+ls = []
+valid = True
+
+for i in a:
+    if i == '(' or i == '[' or i == '{':
+        ls.append(i)
+    elif i == ')' or i == ']' or i == '}':
+        if not ls:
+            valid = False
+            break
+        ch = ls.pop()
+        if ch+i not in ['()', '[]', '{}']:
+            valid = False
+            break
+    else:
+        valid = False
+
+try:
+    ch = ls.pop()
+    valid = False
+except:
+    pass
+
+if valid:
+    print("Valid")
+else:
+    print("Invalid")
+'''
+
+'''class Person:
+    def __init__(self, username, password):
+        self.username = username
+        self._password = password
+        print("User created!")
+
+class ChangePassword(Person):
+    def __init__(self, oldPassword, newPassword):
+        if self.password == oldPassword:
+            self.password = newPassword
+        print("Password changed!")
+
+username = 'Shrawil'
+password = 'shrawil123'
+a = Person(username, password)
+a = ChangePassword(password, 'new123')
+'''
+'''
+class Poly:
+    def add(self, a:str, b:str):
+        pass
+    def add(self, a:int, b:int):
+        print(a+b)
+    def __str__(self):
+        return 'Nothing to show.'
+    def __add__(self, a, b):
+        return a + b
+
+obj = Poly()
+obj.add(1 + 2)
+obj.add('A', 'B')
+print(obj)
+'''
+
+'''
+class A:
+    def f1(self):
+        print("A, f1")
+class B:
+    def f2(self):
+        print(f"B, f2")
+class C(B):
+    def f3(self):
+        print("C, f3")
+'''
+
+'''
+class A:
+
+class B(A) 
+
+class C(B) # Multi level
+
+class D(A, B) # Multiple
+
+class (D, A, B) # Hybrid
+'''
+    
+'''
+class Employee:
+    def __init__(self, name, age, salary):
+        self.name = name
+        self.age = age
+        self.salary = salary
+
+
+e01 = Employee('A', 25, 30000)
+print(e01)
+'''
+
+'''
+ls = [1,2,3,4,5]
+ls.max()
+'''
+
+'''class Student:
     def show(self):
         print(self.name, self.age)
 
@@ -7,7 +143,7 @@ class Student:
         self.age = age
 
 s1 = Student()
-
+'''
 '''
 class Vehicle:
     def add(self):
