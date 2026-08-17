@@ -4,12 +4,12 @@
 # If n is odd, multiply it by 3 and add 1.
 # Repeat it until n is 1.
 
-n = int(input("Enter a number : "))
+n = int(input())
 
-print(f"{n}", end="")
+print(n, end=" ")
 while n != 1:
     if n % 2 == 0:
         n = n // 2
     else:
         n = (n * 3) + 1
-    print(f" -> {n}", end="")
+    print(n, end=" ")

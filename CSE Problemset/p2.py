@@ -1,14 +1,14 @@
 # You are given all numbers between 1,2,..n except one.
 # Your task is to find the missing number.
 
-nums = [1,2,3,4]
-n = 5
+n = int(input())
+items = input().split()
+nums = list(map(lambda x : int(x), items))
 
 def solution(nums, n):
     nums = set(nums)
-    mn = min(nums)
-    for i in range(mn, n+1):
+    for i in range(1, n+1):
         if i not in nums:
-            print(f"{i} is the missing number.")
+            print(i)
 
 solution(nums, n)
