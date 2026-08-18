@@ -1,4 +1,27 @@
-print(3*'a')
+
+'''
+from functools import reduce
+ls = [1,2,3,4,5]
+
+mapls = list(map(lambda x : x * 2, ls))
+print(mapls)
+
+filterls = list(filter(lambda x : x % 2 == 0, ls))
+print(filterls)
+
+reducels = list(reduce(lambda x, y : x+y, ls))
+print(reducels)
+'''
+
+'''
+for i in range(5):
+    print("This is part of loop.")
+    if i == 1:
+        print("This is part of if inside loop.")    
+print("This is not part of loop.")
+'''
+
+#print(3*'a')
 
 '''
 a = [1,2,3,4,5,6,7,8]
