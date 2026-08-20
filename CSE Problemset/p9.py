@@ -1,5 +1,4 @@
 # Tower of Hanoi
-
 n = 3
 
 def tower(n, a, b, c):
