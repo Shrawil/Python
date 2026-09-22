@@ -2,7 +2,8 @@ import qrcode
 import os
 
 plants = {
-    "Grevillea robusta": "https://en.wikipedia.org/wiki/Grevillea_robusta",
+    "Powder puff": "https://en.wikipedia.org/wiki/Calliandra_haematocephala",
+    "Red Sandalwood":"https://en.wikipedia.org/wiki/Pterocarpus_santalinus"
 }
 
 # Create folder for QR codes
